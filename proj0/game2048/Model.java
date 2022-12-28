@@ -146,7 +146,9 @@ public class Model extends Observable {
             if(tile != null) {
                 for(int next = row - 1;next >= 0;next--) {
                     Tile tile1 = board.tile(col, next);
-                    if(tile1 != null && tile1.value() == tile.value()) {
+                    if(tile1 != null) {
+                        if(tile1.value() != tile.value())
+                            break;
                         board.move(col, row, tile1);
                         score += board.tile(col, row).value();
                         changed = true;
