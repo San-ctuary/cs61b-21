@@ -7,13 +7,7 @@ package DebugExercise;
 public class DebugExercise2 {
     /** Returns the max of a and b. Do not step into this function. */
     public static int max(int a, int b) {
-        int w = (b - a) >> 31;
-        /* If you're stepping into this function, click the
-           step out button because you're not going to learn anything. */
-        int z = ~(b - a) >> 31;
-
-        int max = b & w | a & z;
-        return max;
+        return Math.max(a,b);
     }
 
 
@@ -71,14 +65,15 @@ public class DebugExercise2 {
     public static int sumOfElementwiseMaxes(int[] a, int[] b) {
         int[] maxes = arrayMax(a, b);
         int sumofMaxes = arraySum(maxes);
-        return arraySum(a) + arraySum(b) - sumofMaxes;
+        return sumofMaxes;
     }
 
 
     public static void main(String[] args) {
-        int[] a = {1, 11, -1, -11};
-        int[] b = {3, -3, 2, -1};
-
+//        int[] a = {1, 11, -1, -11};
+//        int[] b = {3, -3, 2, -1};
+        int[] a = {2, 0, 10, 14};
+        int[] b = {-5, 5, 20, 30};
         int sumOfElementwiseMaxes = sumOfElementwiseMaxes(a, b);
         System.out.println(sumOfElementwiseMaxes);
     }
