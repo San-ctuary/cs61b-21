@@ -1,4 +1,5 @@
 package gh2;
+
 import edu.princeton.cs.algs4.StdAudio;
 import edu.princeton.cs.algs4.StdDraw;
 
@@ -18,12 +19,12 @@ public class GuitarHero {
 
             /* check if the user has typed a key; if so, process it */
 //            if (StdDraw.hasNextKeyTyped()) {
-                char key = 'c';
-                if (key == 'a') {
-                    stringA.pluck();
-                } else if (key == 'c') {
-                    stringC.pluck();
-                }
+            char key = 'c';
+            if (key == 'a') {
+                stringA.pluck();
+            } else if (key == 'c') {
+                stringC.pluck();
+            }
 //            }
 
             /* compute the superposition of samples */

@@ -1,15 +1,18 @@
 package gh2;
 
 // TODO: uncomment the following import once you're ready to start this portion
- import deque.ArrayDeque;
- import deque.Deque;
+
+import deque.ArrayDeque;
+import deque.Deque;
 // TODO: maybe more imports
 
 //Note: This file will not compile until you complete the Deque implementations
 public class GuitarString {
-    /** Constants. Do not change. In case you're curious, the keyword final
+    /**
+     * Constants. Do not change. In case you're curious, the keyword final
      * means the values cannot be changed at runtime. We'll discuss this and
-     * other topics in lecture on Friday. */
+     * other topics in lecture on Friday.
+     */
     private static final int SR = 44100;      // Sampling Rate
     private static final double DECAY = .996; // energy decay factor
 
@@ -17,6 +20,7 @@ public class GuitarString {
     // TODO: uncomment the following line once you're ready to start this portion
     private Deque<Double> buffer;
     private int capacity;
+
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
         // TODO: Create a buffer with capacity = SR / frequency. You'll need to
@@ -25,7 +29,7 @@ public class GuitarString {
         //       Your should initially fill your buffer array with zeros.
         this.buffer = new ArrayDeque<>();
         this.capacity = (int) Math.round(SR / frequency);
-        for(int i = 0; i < capacity; i++)
+        for (int i = 0; i < capacity; i++)
             buffer.addLast(0.0);
     }
 
@@ -40,7 +44,7 @@ public class GuitarString {
         //       other. This does not mean that you need to check that the numbers
         //       are different from each other. It means you should repeatedly call
         //       Math.random() - 0.5 to generate new random numbers for each array index.
-        for(int i = 0; i < this.capacity; i++) {
+        for (int i = 0; i < this.capacity; i++) {
             this.buffer.removeFirst();
             this.buffer.addLast(Math.random() - 0.5);
         }
@@ -65,4 +69,4 @@ public class GuitarString {
         return this.buffer.get(0) * 2;
     }
 }
-    // TODO: Remove all comments that say TODO when you're done.
+// TODO: Remove all comments that say TODO when you're done.

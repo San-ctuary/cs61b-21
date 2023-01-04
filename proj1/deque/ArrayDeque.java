@@ -1,11 +1,8 @@
 package deque;
 
-import sun.plugin.cache.OldCacheEntry;
-
-import java.util.ArrayList;
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Deque<T>{
+public class ArrayDeque<T> implements Deque<T> {
 
     private int size;
     private int firstPos;
@@ -23,7 +20,7 @@ public class ArrayDeque<T> implements Deque<T>{
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         int oldArrayLength = array.length;
-        for(int i = 0;i < size;i++)
+        for (int i = 0; i < size; i++)
             a[i] = array[(firstPos + i + 1) % oldArrayLength];
         array = a;
         firstPos = array.length - 1;
@@ -47,13 +44,12 @@ public class ArrayDeque<T> implements Deque<T>{
     }
 
 
-
     public int size() {
         return size;
     }
 
     public void printDeque() {
-        for(int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++)
             System.out.print(array[(firstPos + i + 1) % array.length]);
         System.out.println();
     }
@@ -88,7 +84,6 @@ public class ArrayDeque<T> implements Deque<T>{
         T ans = array[(firstPos + 1 + index) % array.length];
         return ans;
     }
-
 
 
     public Iterator<T> iterator() {

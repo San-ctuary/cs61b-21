@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Comparator;
 
-public class MaxArrayDeque<T> extends ArrayDeque{
+public class MaxArrayDeque<T> extends ArrayDeque {
 
     private Comparator<T> comparator;
 
