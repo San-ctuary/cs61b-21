@@ -28,16 +28,18 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public void addFirst(T item) {
-        if (size > array.length * maxFactor)
+        if (size > array.length * maxFactor) {
             resize(size * 2);
+        }
         size += 1;
         array[firstPos] = item;
         firstPos = (firstPos - 1 + array.length) % array.length;
     }
 
     public void addLast(T item) {
-        if (size > array.length * maxFactor)
+        if (size > array.length * maxFactor) {
             resize(size * 2);
+        }
         size += 1;
         array[lastPos] = item;
         lastPos = (lastPos + 1) % array.length;
@@ -49,16 +51,19 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public void printDeque() {
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++) {
             System.out.print(array[(firstPos + i + 1) % array.length]);
+        }
         System.out.println();
     }
 
     public T removeFirst() {
-        if (array.length > 16 && size < array.length * minFactor)
+        if (array.length > 16 && size < array.length * minFactor) {
             resize(array.length / 2);
-        if (isEmpty())
+        }
+        if (isEmpty()) {
             return null;
+        }
         size -= 1;
         T ans = array[(firstPos + 1) % array.length];
         array[(firstPos + 1) % array.length] = null;
@@ -67,10 +72,12 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public T removeLast() {
-        if (array.length > 16 && size < array.length * minFactor)
+        if (array.length > 16 && size < array.length * minFactor) {
             resize(array.length / 2);
-        if (isEmpty())
+        }
+        if (isEmpty()) {
             return null;
+        }
         size -= 1;
         T ans = array[(lastPos - 1 + array.length) % array.length];
         array[(lastPos - 1 + array.length) % array.length] = null;
@@ -79,8 +86,9 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public T get(int index) {
-        if (index >= size)
+        if (index >= size) {
             return null;
+        }
         T ans = array[(firstPos + 1 + index) % array.length];
         return ans;
     }
@@ -112,7 +120,21 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
     public boolean equals(Object o) {
-        return false;
+        if (!(o instanceof ArrayDeque)) {
+            return false;
+        }
+        ArrayDeque other = (ArrayDeque) o;
+        if (this.size != other.size) {
+            return false;
+        }
+        for (int i = 0; i < this.size; i++) {
+            T t = this.get(i);
+            Object o1 = other.get(i);
+            if (!(t.equals(o1))) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

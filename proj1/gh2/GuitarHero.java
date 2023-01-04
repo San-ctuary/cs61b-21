@@ -18,14 +18,14 @@ public class GuitarHero {
         while (true) {
 
             /* check if the user has typed a key; if so, process it */
-//            if (StdDraw.hasNextKeyTyped()) {
-            char key = 'c';
-            if (key == 'a') {
-                stringA.pluck();
-            } else if (key == 'c') {
-                stringC.pluck();
+            if (StdDraw.hasNextKeyTyped()) {
+                char key = 'c';
+                if (key == 'a') {
+                    stringA.pluck();
+                } else if (key == 'c') {
+                    stringC.pluck();
+                }
             }
-//            }
 
             /* compute the superposition of samples */
             double sample = stringA.sample() + stringC.sample();

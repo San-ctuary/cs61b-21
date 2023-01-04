@@ -19,8 +19,9 @@ public class LinkedListDeque<T> implements Deque<T> {
         }
 
         public T get(int index) {
-            if (index == 0)
+            if (index == 0) {
                 return this.item;
+            }
             return this.next.get(index - 1);
         }
 
@@ -77,8 +78,9 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     public T removeFirst() {
-        if (size == 0)
+        if (size == 0) {
             return null;
+        }
         size -= 1;
         Node node = this.sentinel.next;
         Node next = this.sentinel.next.next;
@@ -88,8 +90,9 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     public T removeLast() {
-        if (size == 0)
+        if (size == 0) {
             return null;
+        }
         size -= 1;
         Node node = this.sentinel.prev;
         Node prev = this.sentinel.prev.prev;
@@ -99,8 +102,9 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     public T get(int index) {
-        if (index >= size)
+        if (index >= size) {
             return null;
+        }
         Node p = this.sentinel;
         for (int i = 0; i <= index; i++)
             p = p.next;
@@ -108,8 +112,9 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     public T getRecursive(int index) {
-        if (index >= size)
+        if (index >= size) {
             return null;
+        }
         return this.sentinel.next.get(index);
     }
 
@@ -118,7 +123,7 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     private class LinkedListDequeIterator implements Iterator<T> {
-        private Node p = sentinel;
+        private Node p = sentinel.next;
 
         @Override
         public boolean hasNext() {
@@ -134,16 +139,19 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     public boolean equals(Object o) {
-        if (!(o instanceof LinkedListDeque))
+        if (!(o instanceof LinkedListDeque)) {
             return false;
+        }
         LinkedListDeque other = (LinkedListDeque) o;
-        if (this.size != other.size)
+        if (this.size != other.size) {
             return false;
+        }
         for (int i = 0; i < this.size; i++) {
             T t = this.get(i);
             Object o1 = other.get(i);
-            if (!(t.equals(o1)))
+            if (!(t.equals(o1))) {
                 return false;
+            }
         }
         return true;
     }

@@ -1,6 +1,10 @@
 package deque;
 
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Iterator;
+
 import static org.junit.Assert.*;
 
 
@@ -127,5 +131,20 @@ public class LinkedListDequeTest {
             assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
         }
 
+    }
+
+
+    @Test
+    public void iteratorTest() {
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+        for (int i = 0; i < 100; i++) {
+            lld1.addLast(i);
+        }
+        Iterator<Integer> iterator = lld1.iterator();
+        int idx = 0;
+        while (iterator.hasNext()) {
+            Assert.assertEquals(lld1.get(idx), iterator.next());
+            idx += 1;
+        }
     }
 }
