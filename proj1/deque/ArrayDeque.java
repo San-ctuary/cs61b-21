@@ -20,8 +20,9 @@ public class ArrayDeque<T> implements Deque<T> {
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         int oldArrayLength = array.length;
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++) {
             a[i] = array[(firstPos + i + 1) % oldArrayLength];
+        }
         array = a;
         firstPos = array.length - 1;
         lastPos = size;
@@ -102,7 +103,7 @@ public class ArrayDeque<T> implements Deque<T> {
 
         private int wizPos;
 
-        public ArrayDequeIterator() {
+        ArrayDequeIterator() {
             this.wizPos = 0;
         }
 
@@ -113,18 +114,18 @@ public class ArrayDeque<T> implements Deque<T> {
 
         @Override
         public T next() {
-            T returnItem = array[wizPos];
+            T returnItem = array[(firstPos + 1 + wizPos) % array.length];
             wizPos += 1;
             return returnItem;
         }
     }
 
     public boolean equals(Object o) {
-        if (!(o instanceof ArrayDeque)) {
+        if (!(o instanceof Deque)) {
             return false;
         }
-        ArrayDeque other = (ArrayDeque) o;
-        if (this.size != other.size) {
+        Deque other = (Deque) o;
+        if (this.size() != other.size()) {
             return false;
         }
         for (int i = 0; i < this.size; i++) {

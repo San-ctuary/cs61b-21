@@ -1,7 +1,10 @@
 package deque;
 
 import edu.princeton.cs.algs4.StdRandom;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Iterator;
 
 import static org.junit.Assert.*;
 
@@ -160,6 +163,20 @@ public class ArrayDequeTest {
                 assertEquals(last, buglast);
 //                System.out.println("removeLast(" + last + ")");
             }
+        }
+    }
+
+    @Test
+    public void iteratorTest() {
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+        for (int i = 0; i < 100; i++) {
+            lld1.addLast(i);
+        }
+        Iterator<Integer> iterator = lld1.iterator();
+        int idx = 0;
+        while (iterator.hasNext()) {
+            Assert.assertEquals(lld1.get(idx), iterator.next());
+            idx += 1;
         }
     }
 }

@@ -8,11 +8,11 @@ public class LinkedListDeque<T> implements Deque<T> {
      * real node in LinkedListDequ echo node with a prev point and a next point
      */
     private class Node {
-        public Node prev;
-        public T item;
-        public Node next;
+        private Node prev;
+        private T item;
+        private Node next;
 
-        public Node(T item) {
+        Node(T item) {
             this.item = item;
             this.prev = this;
             this.next = this;
@@ -106,8 +106,9 @@ public class LinkedListDeque<T> implements Deque<T> {
             return null;
         }
         Node p = this.sentinel;
-        for (int i = 0; i <= index; i++)
+        for (int i = 0; i <= index; i++) {
             p = p.next;
+        }
         return p.item;
     }
 
@@ -127,7 +128,7 @@ public class LinkedListDeque<T> implements Deque<T> {
 
         @Override
         public boolean hasNext() {
-            return p.next != sentinel;
+            return p != sentinel;
         }
 
         @Override
@@ -139,11 +140,11 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     public boolean equals(Object o) {
-        if (!(o instanceof LinkedListDeque)) {
+        if (!(o instanceof Deque)) {
             return false;
         }
-        LinkedListDeque other = (LinkedListDeque) o;
-        if (this.size != other.size) {
+        Deque other = (Deque) o;
+        if (this.size != other.size()) {
             return false;
         }
         for (int i = 0; i < this.size; i++) {
