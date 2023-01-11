@@ -1,8 +1,5 @@
 package bstmap;
 
-import jdk.nashorn.api.tree.NewTree;
-import org.w3c.dom.Node;
-
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
